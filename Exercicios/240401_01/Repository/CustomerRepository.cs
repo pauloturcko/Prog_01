@@ -45,6 +45,24 @@ namespace _240401_01.Repository
             return retorno;
         }
 
+        public bool ImportFromTxt(string line, string delimiter)
+        {
+            if(string.IsNullOrWhiteSpace(line))
+                return false;
+
+
+            string[] data = line.Split(delimiter);
+
+            if(data.Count() < 1)
+                return false;
+
+            Customer c = new Customer{
+                CustomerId = Convert.ToInt32(data[0]),
+                Name = data[1] == null ? string.Empty : data[1],
+                EmailAddress = data[2] == null ? string.Empty : data[2]
+            };
+        }
+
         private int GetNextId()
         {
             int n = 0;

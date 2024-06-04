@@ -54,5 +54,25 @@ namespace _240401_01.Controllers
 
             return ExportToFile.SaveToDelimitedTxt(fileName, fileContent);
         }
+
+        public bool ImportFromDelimited(string filepath)
+        {
+            try
+            {
+                if(!File.Exists(filepath))
+                    return false;
+                
+                using(StreamReader sr = new StreamReader(filepath))
+                {
+                    string line = string.Empty;
+                    while ((line = sr.ReadLine()) != null);
+                }
+            }
+            catch(System.Exception)
+            {
+
+            }
+            return true;
+        }
     }
 }
